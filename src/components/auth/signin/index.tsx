@@ -37,7 +37,6 @@ const NormalLoginForm = (props: UsersDispatchProps & FormComponentProps): JSX.El
   const { register, handleSubmit, setValue } = useForm<User>();
 
   const onSubmit = (data: User): void => {
-    console.log('data=', data);
     if (props.onAddUser) {
       props.onAddUser({ username: data.username, password: data.password, remember: data.remember });
     }
