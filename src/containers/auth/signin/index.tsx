@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Row, Col, Tag } from 'antd';
 
@@ -8,22 +9,26 @@ import { getForgotUsers } from '../../../selectors';
 import { AuthSignin } from '../../../components/auth';
 import { UserList, ForgotUserList } from '../../../components/userlist';
 
-class ContainerSignin extends Component<UsersDispatchProps & UsersStateProps & ForgotUsers> {
+const StyledCol = styled(Col)`
+  padding: 0 15px;
+`;
+
+class ContainerSignin extends React.Component<UsersDispatchProps & UsersStateProps & ForgotUsers> {
   render(): JSX.Element {
     const { onAddUser, users, forgotUsers } = this.props;
     return (
       <Row>
-        <Col xs={24} sm={24} md={8} style={{ padding: '0 15px' }}>
+        <StyledCol xs={24} sm={24} md={8}>
           <AuthSignin onAddUser={onAddUser} />
-        </Col>
-        <Col xs={24} sm={24} md={8} style={{ padding: '0 15px' }}>
+        </StyledCol>
+        <StyledCol xs={24} sm={24} md={8}>
           <Tag color="#2db7f5">Using Recompose</Tag>
           <UserList users={users} />
-        </Col>
-        <Col xs={24} sm={24} md={8} style={{ padding: '0 15px' }}>
+        </StyledCol>
+        <StyledCol xs={24} sm={24} md={8}>
           <Tag color="#2db7f5">Using Reselect</Tag>
           <ForgotUserList forgotUsers={forgotUsers} />
-        </Col>
+        </StyledCol>
       </Row>
     );
   }
