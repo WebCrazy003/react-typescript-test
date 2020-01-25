@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { mapProps } from 'recompose';
 import { List } from 'antd';
 
-import { UsersStateProps } from '../../../reducers/types';
-import { User } from '../../../reducers/types';
+import { UsersStateProps, User } from '../../../reducers/types';
 
 interface StatusProps {
   status: string;
