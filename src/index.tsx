@@ -14,11 +14,9 @@ const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <div id="app">
-      <BrowserRouter>
-        <Route path="/" component={PrimaryLayout} />
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Route path="/" component={PrimaryLayout} />
+    </BrowserRouter>
   </Provider>,
   root,
 );
