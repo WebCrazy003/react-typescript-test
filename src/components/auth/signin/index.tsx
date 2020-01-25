@@ -81,11 +81,10 @@ const NormalLoginForm = (props: UsersDispatchProps & FormComponentProps): JSX.El
               Remember me
             </Checkbox>,
           )}
-          <a className="login-form-forgot">Forgot password</a>
           <Button type="primary" htmlType="submit" className="login-form-button">
             Log in
           </Button>
-          or <StyledButton>register now!</StyledButton>
+          or <StyledButton>Click on me!</StyledButton>
         </Form.Item>
       </Form>
     </div>
