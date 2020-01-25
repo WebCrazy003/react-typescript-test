@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col } from 'antd';
+import { Row, Col, Tag } from 'antd';
 
 import { addUser } from '../../../actions';
 import { RootState, User, UsersStateProps, UsersDispatchProps, ForgotUsers } from '../../../reducers/types';
@@ -13,13 +13,15 @@ class ContainerSignin extends Component<UsersDispatchProps & UsersStateProps & F
     const { onAddUser, users, forgotUsers } = this.props;
     return (
       <Row>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} style={{ padding: '0 15px' }}>
           <AuthSignin onAddUser={onAddUser} />
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} style={{ padding: '0 15px' }}>
+          <Tag color="#2db7f5">Using Recompose</Tag>
           <UserList users={users} />
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8} style={{ padding: '0 15px' }}>
+          <Tag color="#2db7f5">Using Reselect</Tag>
           <ForgotUserList forgotUsers={forgotUsers} />
         </Col>
       </Row>
