@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { mapProps } from 'recompose';
 import { List } from 'antd';
 
@@ -9,9 +10,13 @@ interface StatusProps {
   status: string;
 }
 
+const StyledH3 = styled.h3`
+  margin-top: '15px';
+`;
+
 const TotalUserList = (props: UsersStateProps & StatusProps): JSX.Element => (
   <div className="UserList">
-    <h3 style={{ marginTop: '15px' }}>{props.status}</h3>
+    <StyledH3>{props.status}</StyledH3>
     <List
       size="small"
       bordered

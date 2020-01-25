@@ -1,15 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { List } from 'antd';
+import styled from 'styled-components';
 
 import { ForgotUsers } from '../../../reducers/types';
 import { User } from '../../../reducers/types';
 
-class ForgotUserList extends Component<ForgotUsers> {
+const StyledH3 = styled.h3`
+  margin-top: '15px';
+`;
+
+class ForgotUserList extends React.Component<ForgotUsers> {
   render(): JSX.Element {
     const { forgotUsers } = this.props;
     return (
       <div>
-        <h3 style={{ marginTop: '15px' }}>Forgot</h3>
+        <StyledH3>Forgot</StyledH3>
         <List
           size="small"
           bordered
