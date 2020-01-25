@@ -1,8 +1,9 @@
 import { createSelector } from 'reselect';
-import { RootState } from '../reducers/types';
 
-const getUsers = (state: RootState) => state.users.users;
+import { RootState, UsersState } from '../reducers/types';
+
+const getUsers = (state: RootState): UsersState => state.users;
 
 export const getForgotUsers = createSelector([getUsers], users => {
-  return users.filter(u => !u.remember);
+  return users.users.filter(u => !u.remember);
 });
