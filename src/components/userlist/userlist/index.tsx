@@ -1,8 +1,9 @@
 import React from 'react';
 import { mapProps } from 'recompose';
+import { List } from 'antd';
 
 import { UsersStateProps } from '../../../reducers/types';
-import { UserComponent } from '..';
+import { User } from '../../../reducers/types';
 
 interface StatusProps {
   status: string;
@@ -10,14 +11,23 @@ interface StatusProps {
 
 const TotalUserList = (props: UsersStateProps & StatusProps): JSX.Element => (
   <div className="UserList">
-    <h3>{props.status} users</h3>
-    {props.users && props.users.map(user => <UserComponent user={user} key={user.username} />)}
+    <h3 style={{ marginTop: '15px' }}>{props.status}</h3>
+    <List
+      size="small"
+      bordered
+      dataSource={props.users}
+      renderItem={(item: User): JSX.Element => (
+        <List.Item>
+          {item.username}:{item.password}
+        </List.Item>
+      )}
+    />
   </div>
 );
 
 const filterByStatus = (remember: boolean): any =>
   mapProps((users: UsersStateProps) => ({
-    status: remember ? 'remember' : 'forgot',
+    status: remember ? 'Remember' : 'Forgot',
     users: users.users.filter(u => u.remember === remember),
   }));
 
