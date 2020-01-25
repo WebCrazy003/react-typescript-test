@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { FormComponentProps } from 'antd/lib/form/Form';
 
-import './index.css';
 import { UsersDispatchProps, User } from '../../../reducers/types';
 
 const StyledButton = styled(Button)`
@@ -19,6 +18,18 @@ const StyledButton = styled(Button)`
     border-color: transparent;
     background: rgba(245, 34, 45, 0.2);
   }
+`;
+
+const StyledForm = styled(Form)`
+  max-width: 300px;
+`;
+
+const PrimaryButton = styled(Button)`
+  width: 100%;
+`;
+
+const StyledIcon = styled(Icon)`
+  color: 'rgba(0,0,0,.25)';
 `;
 
 const NormalLoginForm = (props: UsersDispatchProps & FormComponentProps): JSX.Element => {
@@ -41,12 +52,12 @@ const NormalLoginForm = (props: UsersDispatchProps & FormComponentProps): JSX.El
 
   return (
     <div>
-      <Form onSubmit={handleSubmit(onSubmit)} className="login-form">
+      <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <Form.Item>
           {getFieldDecorator('username', { rules: [{ required: true, message: 'Please input your username!' }] })(
             <Input
               name="username"
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<StyledIcon type="user" />}
               placeholder="Username"
               onChange={(e): void => {
                 setValue('username', e.target.value);
@@ -58,7 +69,7 @@ const NormalLoginForm = (props: UsersDispatchProps & FormComponentProps): JSX.El
           {getFieldDecorator('password', { rules: [{ required: true, message: 'Please input your username!' }] })(
             <Input
               name="password"
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<StyledIcon type="lock" />}
               type="password"
               placeholder="password"
               onChange={(e): void => {
@@ -81,12 +92,12 @@ const NormalLoginForm = (props: UsersDispatchProps & FormComponentProps): JSX.El
               Remember me
             </Checkbox>,
           )}
-          <Button type="primary" htmlType="submit" className="login-form-button">
+          <PrimaryButton type="primary" htmlType="submit">
             Log in
-          </Button>
+          </PrimaryButton>
           or <StyledButton>Click on me!</StyledButton>
         </Form.Item>
-      </Form>
+      </StyledForm>
     </div>
   );
 };
